@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+
+		<div>
+			<a href="json/product.json">123</a>
+		</div>
+
+
+		<script src="http://cdn.bootcss.com/angular.js/1.4.2/angular.min.js"></script>
+		<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"type="text/javascript"></script>
+		<script type="text/javascript">
+			$.ajax({
+  url:"http://test.ybgplatform.com/product/ajaxGetProducts/",
+  type:"POST",
+  data:{"from":0},
+  success:function(data){
+     $("body").empty();
+    for(var i=0; i < data.products.length;i++){
+      var html = "<div><span>name: </span>"+data.products[i].name+"<span>image: </span>"+data.products[i].image+"<span>id:</span>"+data.products[i].id+"<span>price: </span>"+data.products[i].price+"<span> tag:</span>"+data.products[i].tag+"<span> specification:</span>"+data.products[i].specification+"<span> brand: </span>"+data.products[i].brand+"<span> unit:</span>"+data.products[i].unit+"</div>"
+      $("body").append( html);
+    }
+  }
+})
+		</script>
+	</body>
+</html>
